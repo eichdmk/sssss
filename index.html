@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>седа бомба</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f8bbd0, #e1bee7);
+      font-family: 'Pacifico', cursive;
+      overflow: hidden;
+    }
+
+    .card {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .text {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Pacifico', cursive;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .yes {
+      background-color: #ff6f61;
+      color: white;
+    }
+
+    .no {
+      background-color: #a6a6a6;
+      color: white;
+    }
+
+    .no:hover {
+      transform: translateX(calc(-50% + Math.random() * 100px)) translateY(calc(-50% + Math.random() * 100px));
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    img{
+        width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="image.png" alt="">
+    <div class="text">седа бомба</div>
+    <button class="yes">Да!</button>
+    <button class="no">Нет...</button>
+  </div>
+
+  <script>
+    let yesBtn = document.querySelector(".yes");
+    let noBtn = document.querySelector(".no");
+    let card = document.querySelector(".card");
+
+    
+    yesBtn.addEventListener('click', () => {
+      card.classList.add("hidden"); 
+      setTimeout(() => {
+        card.style.display = 'none'; 
+      }, 500); 
+    });
+
+   
+    noBtn.addEventListener('click', () => {
+    
+      let randomX = Math.random() * (window.innerWidth - 100);
+      let randomY = Math.random() * (window.innerHeight - 100);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+  </script>
+</body>
+</html>
